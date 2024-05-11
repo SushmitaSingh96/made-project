@@ -37,10 +37,15 @@ They work in close cooperation with a multitude of organisations at European, re
 
 <!-- List of work packages ordered sequentially, each pointing to an issue with more details. -->
 
-1. Data Ingestion
-2. Data Cleaning and Preparation
-3. EDA
-4. Automated Testing
-5. Continuous Integration
+1. Data Ingestion [#1][i1]
+2. Data Cleaning and Preparation [#2][i2]
+3. EDA [#3][i3]
+4. Automated Testing [#4][i4]
+5. Continuous Integration [#5][i5]
 
-<!--[i1]: https://github.com/jvalue/made-template/issues/1-->
+[i1]: https://github.com/SushmitaSingh96/made-project/issues/1
+[i2]: https://github.com/SushmitaSingh96/made-project/issues/2
+[i3]: https://github.com/SushmitaSingh96/made-project/issues/3
+[i4]: https://github.com/SushmitaSingh96/made-project/issues/4
+[i5]: https://github.com/SushmitaSingh96/made-project/issues/5
+
