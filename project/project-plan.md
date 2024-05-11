@@ -7,7 +7,7 @@ Climate-induced Disasters and the Economic Impact
 ## Main Question
 
 <!-- Think about one main question you want to answer based on the data. -->
-What are the types of climate-induced disasters that impact Germany and as a consequence what is the economic loss? 
+What are the types of climate-induced disasters that impact Germany and as a consequence, what is the economic loss? 
 
 ## Description
 
