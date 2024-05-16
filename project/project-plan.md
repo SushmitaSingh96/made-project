@@ -2,17 +2,17 @@
 
 ## Title
 <!-- Give your project a short title. -->
-Climate-induced Disasters and the Economic Impact
+Climate-induced Disasters 
 
 ## Main Question
 
 <!-- Think about one main question you want to answer based on the data. -->
-What are the types of climate-induced disasters that impact Germany and as a consequence, what is the economic loss? 
+What are the types of climate-induced disasters that impact Germany, is there any significant changes or patterns over time in the occurrence of specific types of disasters due to temperature change on land? 
 
 ## Description
 
 <!-- Describe your data science project in max. 200 words. Consider writing about why and how you attempt it. -->
-Various types of climate-induced disasters threaten countries all over the world today, they range from hydrological disasters such as floods to climatological disasters such as wildfires. It is thus imperitive that we study the patterns of such events and prepare to the best of our abilities to save lives as well as resources. With this motivation in mind, the dataset chosen for this project is about the types of disasters that have impacted various regions around the world. We will look more closely into Germany to observe which type of disaster is Germany more likely to face as extreme climate events become more common. With the second dataset, we attempt to get a scale of economic loss Germany has faced in the year 2022 due to climate related disasters.  
+Various types of climate-induced disasters threaten countries all over the world today, they range from hydrological disasters such as floods to climatological disasters such as wildfires. Thus, we must study the patterns of such events and prepare to the best of our abilities to save lives and resources. With this motivation in mind, the dataset chosen for this project is about the types of disasters that have impacted various regions around the world. We will look more closely into Germany to observe which type of disaster Germany is more likely to face as extreme climate events become more common. With the second dataset, we attempt to look more closely into temperature anomalies over the years in Germany. In the end, we attempt to answer the question of whether there is a significant pattern over time in the occurrence of a specific type of disaster and does it have a correlation to the temperature change on land over the years. 
 
 ## Datasources
 
@@ -25,14 +25,12 @@ Various types of climate-induced disasters threaten countries all over the world
 
 EM-DAT: The International Disaster Database: Centre for Research on the Epidemiology of Disasters: EM-DAT contains data on the occurrence and impacts of over 26,000 mass disasters worldwide from 1900 to the present day. The database is compiled from various sources, including UN agencies, non-governmental organizations, reinsurance companies, research institutes, and press agencies. The Centre for Research on the Epidemiology of Disasters (CRED) distributes the data in open access for non-commercial use.
 
-### Datasource2: European Environment Agency
-* Metadata URL: https://www.eea.europa.eu/data-and-maps/daviz/impacts-of-extreme-weather-and-5#tab-chart_1
-* Data URL: https://github.com/SushmitaSingh96/made-project/blob/main/project/impacts-of-extreme-weather-and-5.csv
+### Datasource2: Food and Agriculture Organisation of the United Nation
+* Metadata URL: https://www.fao.org/faostat/en/#data/ET
+* Data URL: https://github.com/SushmitaSingh96/made-project/blob/main/project/Environment_Temperature_change_E_All_Data.csv
 * Data Type: CSV
 
-The European Environment Agency (EEA) is an agency of the European Union that delivers knowledge and data to support Europe's environment and climate goals. They are an agency of the European Union (EU) that was founded in 1994.
-They work in close cooperation with a multitude of organisations at European, regional and global levels. 
-
+The Food and Agriculture Organization (FAO) is a specialized agency of the United Nations that leads international efforts to defeat hunger. With 195 members - 194 countries and the European Union, FAO works in over 130 countries worldwide.
 ## Work Packages
 
 <!-- List of work packages ordered sequentially, each pointing to an issue with more details. -->
