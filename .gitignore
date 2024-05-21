@@ -1,3 +1,6 @@
 .DS_Store
 /data/*
 !/data/.gitkeep
+project/components/.env
+project/components/test.py
+project/test.ipynb
