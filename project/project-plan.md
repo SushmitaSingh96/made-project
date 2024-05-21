@@ -20,7 +20,7 @@ Various types of climate-induced disasters threaten countries all over the world
 
 ### Datasource1: Public EM-DAT
 * Metadata URL: https://public.emdat.be/data
-* Data URL: https://github.com/SushmitaSingh96/made-project/blob/main/project/Indicator_11_1_Physical_Risks_Climate_related_disasters_frequency_7212563912390016675.csv
+* Data URL: https://public.emdat.be/data
 * Data Type: CSV
 
 EM-DAT: The International Disaster Database: Centre for Research on the Epidemiology of Disasters: EM-DAT contains data on the occurrence and impacts of over 26,000 mass disasters worldwide from 1900 to the present day. The database is compiled from various sources, including UN agencies, non-governmental organizations, reinsurance companies, research institutes, and press agencies. The Centre for Research on the Epidemiology of Disasters (CRED) distributes the data in open access for non-commercial use.
