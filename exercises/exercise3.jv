@@ -1,0 +1,58 @@
+pipeline goodsPipeline {
+    block DataExtractor oftype HttpExtractor {
+        url: "https://www-genesis.destatis.de/genesis/downloads/00/tables/46131-0014_00.csv";
+    }
+    block goodsTextFileInterpreter oftype TextFileInterpreter { encoding : "latin2";}
+    block goodsCSVInterpreter oftype CSVInterpreter {
+        delimiter : ';';
+    } 
+    block goodsRowDeleter oftype RowDeleter {
+        delete: [row 1, row 2, row 3, row 4, row 5, row 6, row 7, row 8];
+    }
+    block goodsColumnDeleter oftype ColumnDeleter {
+   delete: [
+     column F, column G, column H, column I, column J, column K, column L, column M, column N, column O, column P, column Q, column R, column S, column T, column U, column V, column W, column X, column Y, column Z, column AA, column AB, column AC, column AD, column AE, column AF, column AG, column AH, column AI, column AJ, column AK, column AL, column AM, column AN, column AO, column AP, column AQ, column AR, column AS];
+    }
+    block goodsTableInterpreter oftype TableInterpreter {
+        header : false;
+        columns : [
+            "year" oftype text,
+            "month" oftype monate,
+            "goods_id" oftype id,
+            "goods_name" oftype text,
+            "goods_source" oftype text,
+            "abroad" oftype integer,
+            "total" oftype integer,
+        ];
+    }
+
+    block Databaseloader oftype SQLiteLoader {
+        table : "goods";
+        file : "./goodsTransportedByTrain.sqlite";
+    }
+
+    valuetype monate oftype text {
+        constraints : [Monate];
+    }
+    
+    constraint Monate oftype AllowlistConstraint {
+        allowlist: ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November","Dezember"];
+    }
+
+    valuetype id oftype text {
+        constraints : [IDRegex];
+    }
+
+    constraint IDRegex oftype RegexConstraint {
+        regex : /^NST7-[A-Z0-9]{3}$/;
+
+    }
+
+    DataExtractor
+        ->goodsTextFileInterpreter
+        ->goodsCSVInterpreter
+        ->goodsRowDeleter
+        ->goodsColumnDeleter
+        ->goodsTableInterpreter
+        ->Databaseloader;
+}
