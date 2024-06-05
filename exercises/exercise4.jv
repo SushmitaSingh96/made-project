@@ -1,0 +1,58 @@
+pipeline WeatherPipeline {
+    block DataExtractor oftype LocalFileExtractor {
+        filePath: "data.csv";
+    }
+    block WeatherTextFileInterpreter oftype TextFileInterpreter {}
+    block WeatherCSVInterpreter oftype CSVInterpreter {
+        delimiter : ';';
+    } 
+    block WeatherColumnDeleter oftype ColumnDeleter {
+        delete: [column F,column G,column H,column I];
+    }
+    block WeatherRowDeleter oftype RowDeleter {
+        delete: [row 1];
+    }
+    block WeatherTableInterpreter oftype TableInterpreter {
+        header : false;
+        columns : [
+            "id" oftype integer,
+            "producer" oftype text,
+            "model" oftype text,
+            "month" oftype integer,
+            "temperature" oftype decimal,
+            "battery_temperature" oftype decimal,
+        ];
+    }
+    block Databaseloader oftype SQLiteLoader {
+        table : "temperatures";
+        file : "./temperatures.sqlite";
+    }
+
+    block TempTransformer oftype TableTransformer {
+        inputColumns: ['temperature'];
+        outputColumn: 'temperature';
+        use: CelsiusToFahrenheit;
+    }
+
+    block BatteryTempTransformer oftype TableTransformer {
+        inputColumns: ['battery_temperature'];
+        outputColumn: 'battery_temperature';
+        use: CelsiusToFahrenheit;
+    }
+
+    transform CelsiusToFahrenheit {
+        from tempCelsius oftype decimal;
+        to tempFahrenheit oftype decimal;
+        tempFahrenheit: round((tempCelsius * 9/5) + 32);
+}
+
+    DataExtractor
+        ->WeatherTextFileInterpreter
+        ->WeatherCSVInterpreter
+        ->WeatherColumnDeleter
+        ->WeatherRowDeleter
+        ->WeatherTableInterpreter
+        ->TempTransformer
+        ->BatteryTempTransformer
+        ->Databaseloader;   
+}
