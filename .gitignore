@@ -9,4 +9,4 @@ project/components/test_ingest.py
 project/components/test_prep.py
 project/data/
 exercises/*.sqlite
-
+exercises/*.csv
