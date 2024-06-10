@@ -8,3 +8,5 @@ project/components/test.ipynb
 project/components/test_ingest.py
 project/components/test_prep.py
 project/data/
+exercises/*.sqlite
+
