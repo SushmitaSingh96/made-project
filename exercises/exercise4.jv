@@ -46,6 +46,7 @@ pipeline WeatherPipeline {
         tempFahrenheit: round((tempCelsius * 9/5) + 32);
 }
 
+
     DataExtractor
         ->WeatherTextFileInterpreter
         ->WeatherCSVInterpreter
