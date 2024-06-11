@@ -49,7 +49,7 @@ pipeline WeatherPipeline {
     transform CelsiusToFahrenheit {
         from tempCelsius oftype decimal;
         to tempFahrenheit oftype decimal;
-        tempFahrenheit: round((tempCelsius * 9/5) + 32);
+        tempFahrenheit: (tempCelsius * 9/5) + 32;
     }
 
     DataExtractor
