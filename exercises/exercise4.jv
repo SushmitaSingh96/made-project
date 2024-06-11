@@ -1,6 +1,12 @@
 pipeline WeatherPipeline {
-    block DataExtractor oftype LocalFileExtractor {
-        filePath: "data.csv";
+    block DataExtractor oftype HttpExtractor {
+        url: "https://www.mowesta.com/data/measure/mowesta-dataset-20221107.zip";
+    }
+    block ZipArchiveInterpreter oftype ArchiveInterpreter {
+        archiveType: "zip";
+    }
+    block AgencyFilePicker oftype FilePicker {
+        path: "/data.csv";
     }
     block WeatherTextFileInterpreter oftype TextFileInterpreter {}
     block WeatherCSVInterpreter oftype CSVInterpreter {
@@ -44,9 +50,11 @@ pipeline WeatherPipeline {
         from tempCelsius oftype decimal;
         to tempFahrenheit oftype decimal;
         tempFahrenheit: round((tempCelsius * 9/5) + 32);
-}
+    }
 
     DataExtractor
+        ->ZipArchiveInterpreter
+        ->AgencyFilePicker
         ->WeatherTextFileInterpreter
         ->WeatherCSVInterpreter
         ->WeatherColumnDeleter
