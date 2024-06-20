@@ -85,14 +85,23 @@ class Ingestion:
             download_button.click()
 
             # Get the path of the downloaded file
-            download_path = os.path.join(os.path.expanduser('~'), 'Downloads', 'public_emdat_2024-05-19.xlsx')
+            download_dir = os.path.join(os.path.expanduser('~'), 'Downloads')
+            file_prefix = 'public_emdat_'
 
             # Wait for the file to be downloaded
-            while not os.path.exists(download_path):
-                time.sleep(1)
+            downloaded_file = None
+            while not downloaded_file:
+                time.sleep(10)
+                files = [os.path.join(download_dir, f) for f in os.listdir(download_dir) if f.startswith(file_prefix)]
+                if files:
+                    downloaded_file = max(files, key=os.path.getctime)
+
+            # Wait for the file to be downloaded
+            while not os.path.exists(downloaded_file):
+                time.sleep(5)
 
             # Load the dataset into a DataFrame
-            df = pd.read_excel(download_path, engine='openpyxl')
+            df = pd.read_excel(downloaded_file, engine='openpyxl')
             #print("DataFrame created successfully!")
             #print(df.head())
         driver.quit()

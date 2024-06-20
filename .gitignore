@@ -3,6 +3,7 @@
 !/data/.gitkeep
 project/components/.env
 *.pyc
+project/components/__pycache__/*.pyc
 __pycache__/
 project/components/test.ipynb
 project/components/test_ingest.py
@@ -12,3 +13,7 @@ exercises/*.sqlite
 exercises/*.csv
 exercises/test*
 *.sqlite
+*.ipynb
+project/*.ipynb
+project/components/__pycache__/
+component_test_ingest.py
