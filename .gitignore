@@ -17,3 +17,4 @@ exercises/test*
 project/*.ipynb
 project/components/__pycache__/
 component_test_ingest.py
+exercises/stops.txt
