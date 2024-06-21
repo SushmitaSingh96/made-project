@@ -23,7 +23,7 @@ jobs:
           python-version: '3.11'
 
       - name: Install dependencies
-        run: pip install -r project/requirements.txt
+        run: pip install -r requirements.txt
 
       - name: Create .env file from secrets
         run: |
