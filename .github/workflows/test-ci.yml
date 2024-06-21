@@ -15,6 +15,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+        # Install Jayvee
+      - name: Set up Jayvee
+        run: |
+          ./grading/ci/setup_jayvee.sh
+
         #Install Python  
       - name: Set up Python
         uses: actions/setup-python@v2
