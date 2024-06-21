@@ -29,6 +29,11 @@ jobs:
       - name: Install dependencies
         run: pip install -r project/requirements.txt
 
+      - name: Create .env file from secrets
+        run: |
+            echo "TEM_DAT_USERNAME=${{ secrets.EM_DAT_USERNAME }}" >> project/components/.env
+            echo "TEM_DAT_PASSWORD=${{ secrets.EM_DAT_PASSWORD }}" >> project/components/.env
+
       - name: Make tests.sh executable
         run: chmod +x project/tests.sh
 
