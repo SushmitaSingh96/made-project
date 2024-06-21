@@ -1,0 +1,38 @@
+name: Dependencies and test CI pipeline
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - project/**
+
+jobs:
+  run-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+        # Install Jayvee
+      - name: Set up Jayvee
+        run: |
+          ./grading/ci/setup_jayvee.sh
+
+        #Install Python  
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r project/requirements.txt
+
+      - name: Make tests.sh executable
+        run: chmod +x project/tests.sh
+
+      - name: Run tests
+        run: project/tests.sh
+
+
