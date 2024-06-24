@@ -18,10 +18,7 @@ jobs:
 
       - name: setup-chromedriver
         uses: nanasess/setup-chromedriver@v2.2.2
-        
-      - run: |
-          export DISPLAY=:99
-          chromedriver --url-base=/wd/hub &
+
 
         #Install Python  
       - name: Set up Python
