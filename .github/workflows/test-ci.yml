@@ -44,7 +44,12 @@ jobs:
         run: chmod +x project/tests.sh
 
       - name: Run tests
-        run: project/tests.sh
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y xvfb
+          export DISPLAY=:99.0
+          nohup Xvfb :99 -screen 0 1024x768x16 &
+          project/tests.sh
 
 
 
