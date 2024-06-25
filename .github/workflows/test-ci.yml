@@ -17,8 +17,9 @@ jobs:
 
       - name: Set up Chrome
         uses: browser-actions/setup-chrome@v1
-        with:
-          chrome-version: 'latest'  # Or specify a version if needed
+      
+      - name: Check Chrome Version        
+        run: chrome --version 
   
       - name: Set up ChromeDriver
         uses: nanasess/setup-chromedriver@v2.2.2
