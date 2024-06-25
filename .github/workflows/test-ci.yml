@@ -17,12 +17,15 @@ jobs:
 
       - name: Set up Chrome
         uses: browser-actions/setup-chrome@v1
+        with:
+          chrome-version: 126
+          install-chromedriver: true
       
       - name: Check Chrome Version        
         run: chrome --version 
   
-      - name: Set up ChromeDriver
-        uses: nanasess/setup-chromedriver@v2.2.2
+#      - name: Set up ChromeDriver
+#        uses: nanasess/setup-chromedriver@v2.2.2
          
       - name: Set up Python
         uses: actions/setup-python@v2
