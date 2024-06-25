@@ -40,12 +40,12 @@ jobs:
             echo "EM_DAT_USERNAME=${{ secrets.EM_DAT_USERNAME }}" >> project/components/.env
             echo "EM_DAT_PASSWORD=${{ secrets.EM_DAT_PASSWORD }}" >> project/components/.env
 
-      - name: Create download directory
-        run: mkdir -p /home/runner/work/downloads
+      - name: Set up temporary directory
+        run: mkdir -p temp
     
-      - name: Set environment variable
-        run: echo "DOWNLOAD_DIR=/home/runner/work/downloads" >> $GITHUB_ENV
-        
+      - name: Set environment variable for temp directory
+        run: echo "DOWNLOAD_DIR=$GITHUB_WORKSPACE/temp" >> $GITHUB_ENV
+
       - name: Make tests.sh executable
         run: chmod +x project/tests.sh
 
