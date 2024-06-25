@@ -42,6 +42,7 @@ class Ingestion:
                     return None
                 
     def authenticate_and_ingest(self) -> pd.DataFrame:
+        
         # Get credentials from environment variables
         USERNAME = os.getenv("EM_DAT_USERNAME")
         PASSWORD = os.getenv("EM_DAT_PASSWORD")
@@ -49,7 +50,13 @@ class Ingestion:
         # Initialize the Chrome driver
         driver = webdriver.Chrome()
         chrome_options = Options()
-        chrome_options.add_argument("--headless")  # Run Chrome in headless mode
+        chrome_options.add_argument("--headless")
+        
+        # Set download directory
+        download_dir = os.getenv("DOWNLOAD_DIR", os.path.join(os.path.expanduser('~'), 'Downloads'))
+        prefs = {"download.default_directory": download_dir}
+        chrome_options.add_experimental_option("prefs", prefs)
+
         # Navigate to the login page
         driver = webdriver.Chrome(options=chrome_options)
         driver.get("https://public.emdat.be/login")
