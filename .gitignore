@@ -19,3 +19,4 @@ project/components/__pycache__/*.pyc
 component_test_ingest.py
 exercises/stops.txt
 *.xlsx
+project/test.md
