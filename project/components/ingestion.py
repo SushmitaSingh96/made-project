@@ -5,6 +5,8 @@ import pandas as pd
 
 import os
 import time
+import shutil
+
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -19,6 +21,14 @@ load_dotenv()
 class Ingestion:
     def __init__(self, url) -> None:
         self.url = url
+        self.temp_dir = os.path.join(os.path.dirname(__file__), 'temp')
+    
+    def create_temp_directory(self):
+        os.makedirs(self.temp_dir, exist_ok=True)
+
+    def cleanup_temp_directory(self):
+        if os.path.exists(self.temp_dir):
+            shutil.rmtree(self.temp_dir)
 
     def ingestion_from_url(self) -> pd.DataFrame:
         response = requests.get(self.url)      
@@ -52,9 +62,9 @@ class Ingestion:
         chrome_options = Options()
         chrome_options.add_argument("--headless")
         
-        # Set download directory
-        download_dir = os.getenv("DOWNLOAD_DIR", os.path.join(os.path.expanduser('~'), 'Downloads'))
-        prefs = {"download.default_directory": download_dir}
+        # Create temporary directory to download 
+        self.create_temp_directory()  # Create temporary directory
+        prefs = {"download.default_directory": self.temp_dir}
         chrome_options.add_experimental_option("prefs", prefs)
 
         # Navigate to the login page
@@ -102,7 +112,7 @@ class Ingestion:
             downloaded_file = None
             while not downloaded_file:
                 time.sleep(10)
-                files = [os.path.join(download_dir, f) for f in os.listdir(download_dir) if f.startswith(file_prefix)]
+                files = [os.path.join(self.temp_dir, f) for f in os.listdir(self.temp_dir) if f.startswith(file_prefix)]
                 if files:
                     downloaded_file = max(files, key=os.path.getctime)
 
@@ -114,5 +124,7 @@ class Ingestion:
             df = pd.read_excel(downloaded_file, engine='openpyxl')
             #print("DataFrame created successfully!")
             #print(df.head())
+        # Clean up: Delete temporary directory and its contents
+        self.cleanup_temp_directory()
         driver.quit()
         return df
