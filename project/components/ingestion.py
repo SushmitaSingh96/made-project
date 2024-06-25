@@ -11,6 +11,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from dotenv import load_dotenv
 from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver.chrome.options import Options
 
 # Load environment variables from .env file
 load_dotenv()
@@ -47,8 +48,10 @@ class Ingestion:
 
         # Initialize the Chrome driver
         driver = webdriver.Chrome()
-
+        chrome_options = Options()
+        chrome_options.add_argument("--headless")  # Run Chrome in headless mode
         # Navigate to the login page
+        driver = webdriver.Chrome(options=chrome_options)
         driver.get("https://public.emdat.be/login")
 
         # Wait for the username field to be visible
