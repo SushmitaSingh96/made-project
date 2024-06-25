@@ -37,8 +37,8 @@ jobs:
 
       - name: Create .env file from secrets
         run: |
-            echo "TEM_DAT_USERNAME=${{ secrets.EM_DAT_USERNAME }}" >> project/components/.env
-            echo "TEM_DAT_PASSWORD=${{ secrets.EM_DAT_PASSWORD }}" >> project/components/.env
+            echo "EM_DAT_USERNAME=${{ secrets.EM_DAT_USERNAME }}" >> project/components/.env
+            echo "EM_DAT_PASSWORD=${{ secrets.EM_DAT_PASSWORD }}" >> project/components/.env
 
       - name: Make tests.sh executable
         run: chmod +x project/tests.sh
