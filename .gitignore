@@ -20,3 +20,6 @@ component_test_ingest.py
 exercises/stops.txt
 *.xlsx
 project/test.md
+project/*.png
+project/*.ipynb
+project/report_draft.md
