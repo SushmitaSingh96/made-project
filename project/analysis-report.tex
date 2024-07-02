@@ -1,0 +1,96 @@
+\documentclass{article}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{subcaption} 
+
+
+\title{Temperature Anomaly and Natural Disaster Analysis in Germany}
+\author{Sushmita Singh}
+\date{}
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+
+The goal of this project is to analyze climate change in Germany from various angles. The first dataset from EM-DAT provides insights into the types of disasters Germany is most vulnerable to. The second dataset from FAO gives us temperature anomaly trends in Germany. The questions we aim to answer through this project are:
+
+\begin{enumerate}
+    \item What are the temperature anomaly trends over the years 1961 to 2023 in Germany?
+    \item Are the temperature anomaly trends similar to previous reports seen across the world?
+    \item What natural disasters have struck Germany from 2001 to 2023 and what is their impact?
+\end{enumerate}
+
+\section{Used Data}
+
+The analysis involves five datasets. Three focus on temperature changes in Germany from 1961 to 2023 compared to the 1951-1980 climatology: \texttt{temp\_change\_annual.csv}, \texttt{temp\_change\_met.csv}, and \texttt{temp\_change\_seasonal.csv}. \texttt{temp\_change\_annual.csv} spans months (Jan-Dec) and years Y1961 to Y2023, while \texttt{temp\_change\_met.csv} condenses this to meteorological years. \texttt{temp\_change\_seasonal.csv} categorizes months by seasons (Dec-Jan-Feb, Mar-Apr-May, Jun-Jul-Aug, and Sep-Oct-Nov).
+
+The remaining datasets, \texttt{hydrological\_disasters.csv} and \texttt{meteorological\_disasters.csv}, detail 'Disaster Subtypes' like Riverine floods and Storms/Heatwaves. Columns 'Total Damage' (USD thousands) and 'Total Affected' (injured, affected, homeless) were chosen to provide a comprehensive overview. Both datasets are freely available for educational purposes.
+
+
+\section{Analysis}
+
+\subsection{Method}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.75\textwidth]{combined_plots.png}
+    \caption{Temperature anomaly trend in Germany from 1961-2023}
+    \label{fig:Temperature-Anomaly}
+\end{figure}
+
+Figure \ref{fig:Temperature-Anomaly} aims to answer the first and second questions. It plots the temperature change in Germany from 1961-2023. The datasets \texttt{temp\_change\_annual.csv}, \texttt{temp\_change\_met.csv}, and \texttt{temp\_change\_seasonal.csv} were transformed into long format for analysis by grouping years into decades starting from 1961, and using the mean temperature of each decade for clarity in plotting.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=1.1\textwidth]{disaster_subtypes_comparison.png}  
+    \caption{Hydrological and Meteorological Disasters in Germany}
+    \label{fig:Disaster-Subtypes}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=1.1\textwidth]{combined_plots_aggregated.png} 
+    \caption{Hydrological and Meteorological Disaster Impact in Germany}
+    \label{fig:Impact}
+\end{figure}
+
+\subsection{Result}
+
+Figure \ref{fig:Temperature-Anomaly} provides a clear picture of increasing temperature trends in Germany over the decades. 
+
+Figure \ref{fig:Disaster-Subtypes} illustrates the types of hydrological and meteorological disasters Germany is most vulnerable to, giving a clear picture of disasters most likely to affect Germany in the coming years.
+
+Figure \ref{fig:Impact} demonstrates the impact of these disasters, plotting 'Total Damage' for the hydrological disasters dataset and 'Total Affected' for the meteorological dataset on the y-axis.
+
+\subsection{Interpretation}
+
+Germany has observed warming temperatures over the years (Figure \ref{fig:Temperature-Anomaly}), alongside an escalation in the scale of disasters. Figure \ref{fig:Impact} illustrates a pronounced peak in 2021, indicating a notable increase compared to the previous two decades.
+
+"We are not necessarily seeing more frequent floods in Germany," says Johannes Quaas, a meteorologist at Leipzig University in eastern Germany. "But when they occur, they are now more extreme." \cite{DWArticle}
+
+
+\section{Conclusion}
+
+To address the project's questions:
+\begin{enumerate}
+    \item We can conclusively say Germany is experiencing increasing temperatures year on year (Figure \ref{fig:Temperature-Anomaly}).
+    
+    \item The temperature anomaly trends in Germany are consistent with global trends as reported by FAO of the United Nations \cite{FAOReport}.
+    
+    \item \begin{minipage}[t]{\linewidth}
+          'Extra-tropical storms' and 'Riverine floods' are predominant in Germany Figure \ref{fig:Disaster-Subtypes}. The most severe hydrological disaster occurred in 2021, causing \$45 million USD in damage. Additionally, a meteorological disaster in the same year affected 600 people.
+          \end{minipage}
+\end{enumerate}
+
+One notable limitation in the EM-DAT dataset was missing values. To mitigate this, numerical columns were filled with zeros. This approach may have introduced biases in estimating disaster impacts and trends. 
+
+
+
+\begin{thebibliography}{9}
+\bibitem{FAOReport} FAO of the United Nations. Climate change and food security: risks and responses. Available at: \url{https://openknowledge.fao.org/server/api/core/bitstreams/79e017d5-bd31-4ef3-83c3-eee03fdfe426/content}
+\bibitem{DWArticle} Deutsche Welle. Are extreme floods the new normal for Germany? Available at: \url{https://www.dw.com/en/are-extreme-floods-the-new-normal-for-germany/a-69255435}
+\end{thebibliography}
+
+\end{document}
