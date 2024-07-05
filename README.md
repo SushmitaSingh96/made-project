@@ -2,50 +2,57 @@
 
 ![](https://byob.yarr.is/SushmitaSingh96/made-project/score_ex1) ![](https://byob.yarr.is/SushmitaSingh96/made-project/score_ex2) ![](https://byob.yarr.is/SushmitaSingh96/made-project/score_ex3) ![](https://byob.yarr.is/SushmitaSingh96/made-project/score_ex4) ![](https://byob.yarr.is/SushmitaSingh96/made-project/score_ex5)
 
-# Methods of Advanced Data Engineering Template Project
 
-This template project provides some structure for your open data project in the MADE module at FAU.
-This repository contains (a) a data science project that is developed by the student over the course of the semester, and (b) the exercises that are submitted over the course of the semester.
-Before you begin, make sure you have [Python](https://www.python.org/) and [Jayvee](https://github.com/jvalue/jayvee) installed. We will work with [Jupyter notebooks](https://jupyter.org/). The easiest way to do so is to set up [VSCode](https://code.visualstudio.com/) with the [Jupyter extension](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.jupyter).
+## Project Plan
 
-To get started, please follow these steps:
-1. Create your own fork of this repository. Feel free to rename the repository right after creation, before you let the teaching instructors know your repository URL. **Do not rename the repository during the semester**.
-2. Setup the exercise feedback by changing the exercise badge sources in the `README.md` file following the patter `![](https://byob.yarr.is/<github-user-name>/<github-repo>/score_ex<exercise-number>)`. 
-For example, if your user is _myuser_ and your repo is _myrepo_, then update the badge for _exercise 1_ to `![](https://byob.yarr.is/myrepo/myuser/score_ex1)`. Proceed with the remaining badges accordingly.
+### Title
+
+Climate-induced Disasters- Germany
+
+### Main Question
+
+1. What are the temperature anomaly trends over the years 1961 to 2023 in Germany?
+2. Are the temperature anomaly trends similar to previous reports seen across the world? 
+3. What natural disasters have struck Germany from 2001 to 2023 and what is the impact?
+
+### Description
+
+Various types of climate-induced disasters threaten countries all over the world today, ranging from hydrological disasters such as floods to climatological disasters such as wildfires. Thus, we must study the patterns of such events and prepare to the best of our abilities to save lives and resources. With this motivation in mind, the dataset chosen for this project is about the types of disasters that have impacted various regions around the world. We will look more closely into Germany to observe which type of disaster Germany is more likely to face as extreme climate events become more common. With the second dataset, we attempt to look more closely into temperature anomalies over the years in Germany. In the end, we attempt to answer the question of whether there is a significant pattern over time in the occurrence of a specific type of disaster and does it have a correlation to the temperature change on land over the years.
+
+### Datasources
+
+#### Datasource1: Public EM-DAT
+
+- Metadata URL: [https://public.emdat.be/data](https://public.emdat.be/data)
+- Data URL: [https://public.emdat.be/data](https://public.emdat.be/data)
+- Data Type: Microsoft Excel
+
+EM-DAT: The International Disaster Database: Centre for Research on the Epidemiology of Disasters: EM-DAT contains data on the occurrence and impacts of over 26,000 mass disasters worldwide from 1900 to the present day. The database is compiled from various sources, including UN agencies, non-governmental organizations, reinsurance companies, research institutes, and press agencies. The Centre for Research on the Epidemiology of Disasters (CRED) distributes the data in open access for non-commercial use.
+
+#### Datasource2: Food and Agriculture Organisation of the United Nation
+
+- Metadata URL: [https://www.fao.org/faostat/en/#data/ET](https://www.fao.org/faostat/en/#data/ET)
+- Data URL: [https://bulks-faostat.fao.org/production/Environment_Temperature_change_E_All_Data.zip](https://bulks-faostat.fao.org/production/Environment_Temperature_change_E_All_Data.zip)
+- Data Type: CSV
+
+The Food and Agriculture Organization (FAO) is a specialized agency of the United Nations that leads international efforts to defeat hunger. With 195 members - 194 countries and the European Union, FAO works in over 130 countries worldwide.
+
+Details about the data sources and the data preparation project can be found under project/data-report.pdf. Details about the analysis of the data and outcome of this project can be found under project/analysis-report.pdf.
+
+## Exercises
+
+The exercises were completed using Jayvee, a domain-specific language for automated data pipeline processing. Here are the solutions:
+
+- Exercise 1: [Link to Exercise 1 Solution](exercises/exercise1.jv)
+- Exercise 2: [Link to Exercise 2 Solution](exercises/exercise2.jv)
+- Exercise 3: [Link to Exercise 3 Solution](exercises/exercise3.jv)
+- Exercise 4: [Link to Exercise 4 Solution](exercises/exercise4.jv)
+- Exercise 5: [Link to Exercise 5 Solution](exercises/exercise5.jv)
+
+Each exercise solution demonstrates the use of Jayvee to build automated data pipelines as specified in the exercises.
 
 
-## Project Work
-Your data engineering project will run alongside lectures during the semester. We will ask you to regularly submit project work as milestones so you can reasonably pace your work. All project work submissions **must** be placed in the `project` folder.
-
-### Exporting a Jupyter Notebook
-Jupyter Notebooks can be exported using `nbconvert` (`pip install nbconvert`). For example, to export the example notebook to html: `jupyter nbconvert --to html examples/final-report-example.ipynb --embed-images --output final-report.html`
 
 
 ## Exercises
-During the semester you will need to complete exercises using [Jayvee](https://github.com/jvalue/jayvee). You **must** place your submission in the `exercises` folder in your repository and name them according to their number from one to five: `exercise<number from 1-5>.jv`.
 
-In regular intervalls, exercises will be given as homework to complete during the semester. Details and deadlines will be discussed in the lecture, also see the [course schedule](https://made.uni1.de/). At the end of the semester, you will therefore have the following files in your repository:
-
-1. `./exercises/exercise1.jv`
-2. `./exercises/exercise2.jv`
-3. `./exercises/exercise3.jv`
-4. `./exercises/exercise4.jv`
-5. `./exercises/exercise5.jv`
-
-### Exercise Feedback
-We provide automated exercise feedback using a GitHub action (that is defined in `.github/workflows/exercise-feedback.yml`). 
-
-To view your exercise feedback, navigate to Actions -> Exercise Feedback in your repository.
-
-The exercise feedback is executed whenever you make a change in files in the `exercise` folder and push your local changes to the repository on GitHub. To see the feedback, open the latest GitHub Action run, open the `exercise-feedback` job and `Exercise Feedback` step. You should see command line output that contains output like this:
-
-```sh
-Found exercises/exercise1.jv, executing model...
-Found output file airports.sqlite, grading...
-Grading Exercise 1
-	Overall points 17 of 17
-	---
-	By category:
-		Shape: 4 of 4
-		Types: 13 of 13
-```
