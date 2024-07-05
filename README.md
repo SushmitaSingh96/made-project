@@ -52,7 +52,3 @@ The exercises were completed using Jayvee, a domain-specific language for automa
 Each exercise solution demonstrates the use of Jayvee to build automated data pipelines as specified in the exercises.
 
 
-
-
-## Exercises
-
